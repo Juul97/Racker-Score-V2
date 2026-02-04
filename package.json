@@ -7,8 +7,10 @@
     "dev": "vite",
     "start": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "build:gh-pages": "GITHUB_PAGES=true npm run build",
     "preview": "vite preview",
+    "preview:gh-pages": "npm run build:gh-pages && vite preview --base /Racker-Score-V2/",
+    "lint": "eslint .",
     "stop": "pkill -f vite || echo 'No Vite servers running'",
     "clean": "rm -rf dist node_modules/.vite",
     "check-port": "lsof -ti:5173 && echo 'Port 5173 is in use' || echo 'Port 5173 is available'"
