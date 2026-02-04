@@ -13,7 +13,20 @@ export default function Statistics() {
 
   const sportsPlayed = new Set(matchHistory.map(m => m.sport)).size;
   const totalDuration = matchHistory.reduce((sum, m) => sum + (m.duration || 0), 0);
-  const avgDuration = totalMatches > 0 ? Math.floor(totalDuration / totalMatches / 60) : 0;
+  
+  // Format total time played as hours:minutes:seconds
+  const formatTimePlayed = (totalSeconds: number): string => {
+    if (totalSeconds === 0) return '0:00:00';
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    if (hours > 0) {
+      return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+    return `${minutes}:${String(seconds).padStart(2, '0')}`;
+  };
+  
+  const timePlayed = formatTimePlayed(totalDuration);
 
   const recentPlayers = new Set<string>();
   matchHistory.slice(0, 10).forEach(m => {
@@ -79,7 +92,7 @@ export default function Statistics() {
   const stats = [
     { label: 'Total Matches', value: totalMatches, icon: '🎾' },
     { label: 'Sports Played', value: sportsPlayed, icon: '🏆' },
-    { label: 'Avg Match Time', value: `${avgDuration} min`, icon: '⏱️' },
+    { label: 'Time Played', value: timePlayed, icon: '⏱️' },
     { label: 'Total Players', value: recentPlayers.size, icon: '👥' },
   ];
 
