@@ -2,7 +2,7 @@
   "name": "RacketScore - Score Tracker",
   "short_name": "RacketScore",
   "description": "Professional score tracking app for racket sports",
-  "start_url": "/",
+  "start_url": "/Racker-Score-V2/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0ea5e9",

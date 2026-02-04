@@ -4,6 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Racker-Score-V2/',
   plugins: [
     react(),
     VitePWA({
@@ -17,7 +18,7 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: '/Racker-Score-V2/',
         icons: [
           {
             src: '/icon-192.png',
